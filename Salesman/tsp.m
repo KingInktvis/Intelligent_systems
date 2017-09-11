@@ -23,9 +23,9 @@ variance=0;
    rand('state',0); cities = rand(n,2);
    ord = [1:n];  op = path(ord,cities);
 
-   for jstep=1:ceil(maxsteps);
+for jstep=1:ceil(maxsteps);
 %  lower temperature by 0.1 percent
-   temp = temp*0.999;
+  %  temp = temp*0.999;
    for ins = 1:100
       j = ceil(rand*n); len = ceil(rand*(n/2));
       cand = reverse(ord,j,len);
@@ -47,35 +47,35 @@ variance=0;
 
       length = length + curlen;
       average = length / jstep;
-      variance = (variance * (jstep - 1) + ((curlen - average) ^ 2)) / jstep
+      variance = (variance * (jstep - 1) + ((curlen - average) ^ 2)) / jstep;
 
 %  plot map, cities and path
-      figure(1); plotcities(ord,cities);
-      title(['n =',num2str(n,'%3.0f'),       ...
-             '   t =',num2str(jstep*100,'%8.0f'),  ...
-             '   l =',num2str(curlen,'%4.4f'),  ...
-             '   T =',num2str(temp,'%6.6f')],   ...
-             'fontsize',16);
-    if (met==1)
-        xlabel(['Metropolis algorithm, annealing'],'fontsize',16);
-    else
-        xlabel(['Threshold algorithm', ...
-                '    T(0)=',num2str(temps,'%4.4f')], ...
-                'fontsize',16);
-    end
-      pause(0.1);
-   end
+    %   figure(1); plotcities(ord,cities);
+    %   title(['n =',num2str(n,'%3.0f'),       ...
+    %          '   t =',num2str(jstep*100,'%8.0f'),  ...
+    %          '   l =',num2str(curlen,'%4.4f'),  ...
+    %          '   T =',num2str(temp,'%6.6f')],   ...
+    %          'fontsize',16);
+    % if (met==1)
+    %     xlabel(['Metropolis algorithm, annealing'],'fontsize',16);
+    % else
+    %     xlabel(['Threshold algorithm', ...
+    %             '    T(0)=',num2str(temps,'%4.4f')], ...
+    %             'fontsize',16);
+    % end
+    %   pause(0.1);
+end
 %  plot evolution of length versus iteration step
-      figure(2); plot(0,0); hold on;
-      plot(tt,lt,'k.');
-      title(['n =',num2str(n,'%3.0f'),       ...
-             '   l =',num2str(curlen,'%4.4f'),  ...
-             '   T =',num2str(temps,'%4.4f')],   ...
-             'fontsize',16);
-      if (met==1)
-         xlabel(['Metropolis steps / 100'],'fontsize',16);
-      else
-         xlabel(['Threshold steps /100'],'fontsize',16);
-      end
-         ylabel(['l'],'fontsize',16);
-info = [average variance]
+      % figure(2); plot(0,0); hold on;
+      % plot(tt,lt,'k.');
+      % title(['n =',num2str(n,'%3.0f'),       ...
+      %        '   l =',num2str(curlen,'%4.4f'),  ...
+      %        '   T =',num2str(temps,'%4.4f')],   ...
+      %        'fontsize',16);
+      % if (met==1)
+      %    xlabel(['Metropolis steps / 100'],'fontsize',16);
+      % else
+      %    xlabel(['Threshold steps /100'],'fontsize',16);
+      % end
+      %    ylabel(['l'],'fontsize',16);
+info = [average variance];
