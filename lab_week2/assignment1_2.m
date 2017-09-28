@@ -1,6 +1,6 @@
 data = matfile("lab_week2_data/lab1_1.mat");
 men = data.length_men;
-women = data.length_women
+women = data.length_women;
 male_mistakes = 0;
 female_mistakes = 0;
 
@@ -16,5 +16,5 @@ for j = women
     end
 end
 
-male_mistakes;
-female_mistakes;
+male_mistakes
+female_mistakes
