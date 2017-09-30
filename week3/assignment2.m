@@ -13,3 +13,7 @@ figure
 hold on
 fplot(@(x) gaus2(x),[-60, 90])
 fplot(@(x) gaus1(x))
+
+% 2.3
+priorprobability(S1,S2)
+priorprobability(S2,S1)
