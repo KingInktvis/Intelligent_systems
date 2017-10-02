@@ -11,10 +11,18 @@ n = 0.5;
 tMax = 2;
 
 % Initialize prototypes
-W = []
+W = [];
 for i = 1:K
     x = rand();
     y = rand();
     Wi = [x y];
-    W = [W; Wi]
+    W = [W; Wi];
+end
+
+nearest(W, data(2,:));
+for i = tMax
+    r = randperm(P);
+    for i = r
+        
+    end
 end
