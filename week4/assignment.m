@@ -8,7 +8,7 @@ P = s(1);
 % Initilize parameters
 K = 2;
 n = 0.5;
-tMax = 100;
+tMax = 50;
 
 % Initialize prototypes
 W = [];
