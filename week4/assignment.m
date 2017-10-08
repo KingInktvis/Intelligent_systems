@@ -27,9 +27,15 @@ for t = 1:tMax
     r = randperm(P);
     for i = r
         point = data(i,:);
-        n = nearest(W, point);
-        W(n, 1) = W(n, 1) + n * (point(1) - W(n, 1));
-        W(n, 2) = W(n, 2) + n * (point(2) - W(n, 2));
+        % n = nearest(W, point);
+        % W(n, 1) = W(n, 1) + n * (point(1) - W(n, 1));
+        % W(n, 2) = W(n, 2) + n * (point(2) - W(n, 2));
+        prox = proximityOrder(W, point);
+        W(prox(1), 1) = W(prox(1), 1) + n * (point(1) - W(prox(1), 1));
+        W(prox(1), 2) = W(prox(1), 2) + n * (point(2) - W(prox(1), 2));
+        W(prox(2), 1) = W(prox(2), 1) + 0.1 * n * (point(1) - W(prox(2), 1));
+        W(prox(2), 2) = W(prox(2), 2) + 0.1 * n * (point(2) - W(prox(2), 2));
+
     end
     history(t + 1) = Hvq(W, data);
 end

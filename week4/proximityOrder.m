@@ -1,11 +1,12 @@
-function  list = nearest(protos, point)
+function  list = proximityOrder(protos, point)
     v = 1;
-    order = zeros(size(protos), 1);
-    distances = zeros(size(protos), 1);
+    s = size(protos);
+    order = zeros(s(1), 1);
+    distances = zeros(s(1), 1);
 
     d = distanceSquared(protos(1,:), point);
 
-    s = size(protos);
+
     for i = 1:s(1)
         td = distanceSquared(protos(i,:), point);
         order(i) = i;
