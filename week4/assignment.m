@@ -18,8 +18,12 @@ for i = 1:K
     Wi = [x y];
     W = [W; Wi];
 end
-s = Hvq(W, data)
-for i = 1:tMax
+
+% Initialize Hvq history
+history = zeros(tMax + 1, 1);
+history(1) = Hvq(W, data);
+
+for t = 1:tMax
     r = randperm(P);
     for i = r
         point = data(i,:);
@@ -27,9 +31,12 @@ for i = 1:tMax
         W(n, 1) = W(n, 1) + n * (point(1) - W(n, 1));
         W(n, 2) = W(n, 2) + n * (point(2) - W(n, 2));
     end
+    history(t + 1) = Hvq(W, data);
 end
-
+history
 figure
 hold on
 scatter(data(:,1),data(:,2), 2, 'r')
 scatter(W(:,1),W(:,2), 10, 'b')
+figure
+plot(history)
